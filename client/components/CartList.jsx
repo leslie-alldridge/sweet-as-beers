@@ -28,7 +28,9 @@ const CartList = props => (
     </table>
 
     <p className="actions">
-      <a onClick={props.returnToListing}>Continue shopping</a>
+      <a id="link" onClick={props.returnToListing}>
+        Continue shopping
+      </a>
       <button onClick={props.submitUpdate}>Update</button>
       <button onClick={props.goToCheckout} className="button-primary">
         Checkout

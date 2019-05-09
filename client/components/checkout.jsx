@@ -5,20 +5,22 @@ import { navigate } from "../actions/index";
 class Checkout extends Component {
   constructor(props) {
     super(props);
-    this.state = {};
-    this.goHome = this.goHome.bind(this);
   }
 
-  goHome() {
+  goHome = () => {
     this.props.returnToListing();
-  }
+  };
+
+  confirmOrder = () => {
+    console.log("order confirmed");
+  };
 
   render() {
     return (
       <div>
         <p>Welcome to the Checkout Page</p>
         <ul>
-          {this.props.addCart.map(cartItem => {
+          {this.props.cart.map(cartItem => {
             return (
               <li>
                 Item: {cartItem.name} Quantity: {cartItem.quantity}
@@ -26,7 +28,11 @@ class Checkout extends Component {
             );
           })}
         </ul>
-        <button onClick={this.goHome} className="button-primary">
+        <button onClick={this.confirmOrder} className="button-primary">
+          Confirm Order
+        </button>
+        <br />
+        <button onClick={this.goHome} className="button-secondary">
           Go Home
         </button>
       </div>
@@ -44,7 +50,7 @@ const mapDispatchToProps = dispatch => {
 
 function mapStateToProps(state) {
   return {
-    addCart: state.addCart
+    cart: state.cart
   };
 }
 
