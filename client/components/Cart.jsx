@@ -9,13 +9,26 @@ class Cart extends Component {
     this.state = {
       cart: this.props.cart
     };
-    this.updatesItem = this.updatesItem.bind(this);
-    this.submitUpdate = this.submitUpdate.bind(this);
-    this.goToCheckout = this.goToCheckout.bind(this);
   }
 
+  goToCheckout = () => {
+    this.props.finalCart(this.state.cart);
+  };
+
+  updateItem = (id, quantity) => {
+    this.setState({
+      cart: this.state.cart.map(item => {
+        if (item.id === id) item.quantity = Number(quantity);
+        return item;
+      })
+    });
+  };
+
+  submitUpdate = () => {
+    this.props.updateItem(this.state.cart);
+  };
+
   render() {
-    console.log(this.state);
     return (
       <div>
         <p className="welcome">
@@ -25,35 +38,19 @@ class Cart extends Component {
           goToCheckout={this.goToCheckout}
           returnToListing={this.props.returnToListing}
           cart={this.props.cart}
-          updatesItem={this.updatesItem}
+          updateItem={this.updateItem}
           deleteItem={this.props.deleteItem}
           submitUpdate={this.submitUpdate}
         />
       </div>
     );
   }
+}
 
-  goToCheckout() {
-    this.props.finalCart(this.state.cart);
-  }
-
-  updatesItem(id, quantity) {
-    console.log(id);
-    console.log(quantity);
-
-    this.setState({
-      cart: this.state.cart.map(item => {
-        if (item.id === id) item.quantity = Number(quantity);
-        return item;
-      })
-    });
-  }
-
-  submitUpdate() {
-    console.log(this.state.cart);
-
-    this.props.updateItem(this.state.cart);
-  }
+function mapStateToProps(state) {
+  return {
+    cart: state.cart
+  };
 }
 
 const mapDispatchToProps = dispatch => {
@@ -75,12 +72,6 @@ const mapDispatchToProps = dispatch => {
     }
   };
 };
-
-function mapStateToProps(state) {
-  return {
-    cart: state.cart
-  };
-}
 
 export default connect(
   mapStateToProps,

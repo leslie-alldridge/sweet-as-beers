@@ -22,7 +22,7 @@ class Checkout extends Component {
         <ul>
           {this.props.cart.map(cartItem => {
             return (
-              <li>
+              <li key={cartItem.id}>
                 Item: {cartItem.name} Quantity: {cartItem.quantity}
               </li>
             );

@@ -19,7 +19,8 @@ const CartList = props => (
               name={cartItem.name}
               quantity={cartItem.quantity}
               id={cartItem.id}
-              updatesItem={props.updatesItem}
+              key={cartItem.id}
+              updateItem={props.updateItem}
               deleteItem={props.deleteItem}
             />
           );
