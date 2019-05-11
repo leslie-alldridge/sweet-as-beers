@@ -1,14 +1,26 @@
-const auth = require("../db/auth");
+var router = require("express").Router();
 
-let router = require("express").Router();
+var { userExists, createUser, emailExists } = require("../db/auth");
+var token = require("../auth/token");
 
-router.post("/login", (req, res) => {
-  console.log("found the express router");
-});
+router.post("/register", register, token.issue);
 
-router.post("/register", (req, res) => {
-  const { username, password, email } = req.body;
-  auth.create(username, password, email);
-});
+function register(req, res, next) {
+  const { user_name, password, email } = req.body;
+  userExists(user_name, req.app.get("db"))
+    .then(exists => {
+      if (exists) return res.status(400).send({ message: "User Name Taken" });
+      emailExists(email, req.app.get("db")).then(exists => {
+        if (exists)
+          return res.status(400).send({ message: "Email already in use" });
+        createUser(user_name, password, email, req.app.get("db"))
+          .then(() => next())
+          .catch(err => res.status(500).send({ message: "Server Error" }));
+      });
+    })
+    .catch(err => res.status(500).send({ message: "Server Error" }));
+}
+
+router.post("/api/auth/login", token.issue);
 
 module.exports = router;

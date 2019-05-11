@@ -9,7 +9,8 @@ class Login extends Component {
     super(props);
     this.state = {
       email: "",
-      password: ""
+      password: "",
+      username: ""
     };
   }
 
@@ -37,6 +38,19 @@ class Login extends Component {
                 </p>
                 <div className="box">
                   <form>
+                    <div className="field">
+                      <div className="control">
+                        <input
+                          className="input is-large"
+                          type="text"
+                          name="username"
+                          placeholder="Your Username"
+                          autoFocus=""
+                          onChange={this.handleInputChange}
+                        />
+                      </div>
+                    </div>
+
                     <div className="field">
                       <div className="control">
                         <input
