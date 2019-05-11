@@ -1,4 +1,4 @@
-const auth = require("../db/authDB");
+const auth = require("../db/auth");
 
 let router = require("express").Router();
 
