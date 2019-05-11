@@ -8,3 +8,5 @@ export { default as CartListItem } from "./CartListItem";
 export { default as Checkout } from "./Checkout";
 export { default as Listing } from "./Listing";
 export { default as Orders } from "./Orders";
+export { default as Login } from "./Login";
+export { default as Register } from "./Register";

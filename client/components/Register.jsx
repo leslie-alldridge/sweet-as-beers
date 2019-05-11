@@ -1,15 +1,14 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { navigate } from "../actions/index";
 
-//import { loginUser } from "../../actions";
-
-class Login extends Component {
+class Register extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      username: "",
       email: "",
-      password: ""
+      password: "",
+      password2: ""
     };
   }
 
@@ -19,8 +18,15 @@ class Login extends Component {
     });
   };
 
-  loginUser = () => {
-    this.props.loginUser(this.state);
+  handleSubmit = e => {
+    e.preventDefault();
+    let { username, email, password } = this.state;
+    let creds = {
+      username,
+      email,
+      password
+    };
+    this.props.registerUser(creds);
   };
 
   render() {
@@ -30,20 +36,32 @@ class Login extends Component {
           <div className="hero-body">
             <div className="container has-text-centered">
               <div className="column is-4 is-offset-4">
-                <h3 className="title has-text-grey">Login</h3>
+                <h3 className="title has-text-grey">Register</h3>
                 <p className="subtitle has-text-grey">
-                  Please login to proceed.
+                  Please register to proceed.
                 </p>
                 <div className="box">
-                  <form>
+                  <form onSubmit={this.handleSubmit}>
+                    <div className="field">
+                      <div className="control">
+                        <input
+                          className="input is-large"
+                          type="text"
+                          placeholder="Username"
+                          autoFocus=""
+                          name="username"
+                          onChange={this.handleInputChange}
+                        />
+                      </div>
+                    </div>
                     <div className="field">
                       <div className="control">
                         <input
                           className="input is-large"
                           type="email"
-                          name="email"
-                          placeholder="Your Email"
+                          placeholder="Email"
                           autoFocus=""
+                          name="email"
                           onChange={this.handleInputChange}
                         />
                       </div>
@@ -54,26 +72,31 @@ class Login extends Component {
                         <input
                           className="input is-large"
                           type="password"
+                          placeholder="Password"
                           name="password"
-                          placeholder="Your Password"
                           onChange={this.handleInputChange}
                         />
                       </div>
                     </div>
-                    <button
-                      //onClick={this.loginUser}
-                      className="button is-block is-info is-large is-fullwidth"
-                    >
-                      Login
+                    <div className="field">
+                      <div className="control">
+                        <input
+                          className="input is-large"
+                          type="password"
+                          placeholder="Confirm Password"
+                          name="password2"
+                          onChange={this.handleInputChange}
+                        />
+                      </div>
+                    </div>
+
+                    <button className="button is-block is-info is-large is-fullwidth">
+                      Register
                     </button>
                   </form>
                 </div>
                 <p className="has-text-grey">
-                  <span onClick={() => this.props.navigateTo("showRegister")}>
-                    Sign Up
-                  </span>
-                  &nbsp;·&nbsp;
-                  <a href="#/forgot">Forgot Password</a> &nbsp;·&nbsp;
+                  <a href="#/login">Login</a> &nbsp;·&nbsp;
                   <a href="#/help">Need Help?</a>
                 </p>
               </div>
@@ -87,11 +110,8 @@ class Login extends Component {
 
 const mapDispatchToProps = dispatch => {
   return {
-    loginUser: creds => {
-      return dispatch(loginUser(creds));
-    },
-    navigateTo: page => {
-      return dispatch(navigate(page));
+    registerUser: creds => {
+      dispatch(registerUser(creds));
     }
   };
 };
@@ -99,4 +119,4 @@ const mapDispatchToProps = dispatch => {
 export default connect(
   null,
   mapDispatchToProps
-)(Login);
+)(Register);

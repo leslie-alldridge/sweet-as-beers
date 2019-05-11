@@ -1,7 +1,14 @@
 import React from "react";
 import { connect } from "react-redux";
-import { Listing, Header, Checkout, Cart, Orders } from "./Index";
-import Login from "./Login";
+import {
+  Listing,
+  Header,
+  Checkout,
+  Cart,
+  Orders,
+  Login,
+  Register
+} from "./Index";
 
 const App = props => {
   return (
@@ -15,6 +22,8 @@ const App = props => {
         <Orders />
       ) : props.showListing === "showLogin" ? (
         <Login />
+      ) : props.showListing === "showRegister" ? (
+        <Register />
       ) : (
         <Cart />
       )}
