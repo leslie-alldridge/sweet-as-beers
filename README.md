@@ -1,4 +1,4 @@
-# Sweet As Beers
+# Sweet As Beers Complete 
 
 In this challenge you'll build part of a fictitious clearing house for beer - specifically the product listing and shopping cart pages.
 
