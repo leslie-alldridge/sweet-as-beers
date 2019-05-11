@@ -5,21 +5,21 @@ exports.seed = function(knex, Promise) {
       return knex("users").insert([
         {
           id: 1,
-          name: "Leslie",
-          password: "",
+          username: "Leslie",
+          hash: "##",
           email: "leslie@gmail.com"
         },
         {
           id: 2,
-          name: "Nat",
-          password: "",
-          email: "nat@gmail.com"
+          username: "Yuzu",
+          hash: "##",
+          email: "yuz@gmail.com"
         },
         {
           id: 3,
-          name: "Alex",
-          password: "",
-          email: "alex@gmail.com"
+          username: "Luke",
+          hash: "##",
+          email: "luke@gmail.com"
         }
       ]);
     });
