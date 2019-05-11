@@ -1,5 +1,5 @@
 import request from "superagent";
-import { saveUserToken } from "../../utils/auth";
+import { saveUserToken } from "../../utils/auth.js";
 import { receiveLogin, loginError } from "./login";
 
 export function registerUserRequest(creds) {

@@ -1,4 +1,4 @@
-import { removeUser } from "../../utils/auth";
+import { removeUser } from "../../utils/auth.js";
 
 function requestLogout() {
   return {

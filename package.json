@@ -37,6 +37,7 @@
     "express": "^4.16.2",
     "jwt-decode": "^2.2.0",
     "knex": "^0.16.5",
+    "redux-thunk": "^2.3.0",
     "sqlite3": "^4.0.8",
     "superagent": "^5.0.5",
     "webpack": "^2.3.3"
