@@ -1,8 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { navigate } from "../actions/index";
-import { BeerList } from "./Index";
-import data from "../../data/beers";
 
 class Orders extends Component {
   constructor(props) {
@@ -19,9 +17,27 @@ class Orders extends Component {
       <div>
         <p className="welcome">Orders are here</p>
         <button onClick={this.goToHome}>Home</button>
+        {this.props.orders &&
+          this.props.orders.map(orders => {
+            console.log(orders.cart);
+            return orders.cart.map(order => {
+              return (
+                <p key={order.id}>
+                  Order ID: {order.id}, Name: {order.name}, Quantity:{" "}
+                  {order.quantity}
+                </p>
+              );
+            });
+          })}
       </div>
     );
   }
+}
+
+function mapStateToProps(state) {
+  return {
+    orders: state.orders
+  };
 }
 
 const mapDispatchToProps = dispatch => {
@@ -33,6 +49,6 @@ const mapDispatchToProps = dispatch => {
 };
 
 export default connect(
-  null,
+  mapStateToProps,
   mapDispatchToProps
 )(Orders);
