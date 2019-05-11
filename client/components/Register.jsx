@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import { registerUserRequest } from "../actions/auth/register";
 
 class Register extends Component {
   constructor(props) {
@@ -111,7 +112,7 @@ class Register extends Component {
 const mapDispatchToProps = dispatch => {
   return {
     registerUser: creds => {
-      dispatch(registerUser(creds));
+      dispatch(registerUserRequest(creds));
     }
   };
 };

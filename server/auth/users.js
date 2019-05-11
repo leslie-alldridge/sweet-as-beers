@@ -10,14 +10,16 @@ module.exports = {
   getByName
 };
 
-function create(username, password, testDb) {
+function create(username, email, password, testDb) {
+  console.log(username, password);
+
   const connection = testDb || knex;
 
   return new Promise((resolve, reject) => {
     crypto.generate(password, (err, hash) => {
       if (err) reject(err);
       connection("users")
-        .insert({ username, hash })
+        .insert({ username, email, hash })
         .then(user_id => resolve(user_id))
         .catch(err => reject(err));
     });
