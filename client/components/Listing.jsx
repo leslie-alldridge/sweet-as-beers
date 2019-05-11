@@ -1,12 +1,19 @@
-import React from "react";
-import data from "../../data/beers";
+import React, { Component } from "react";
+import { connect } from "react-redux";
+import { navigate } from "../actions/index";
 import { BeerList } from "./Index";
+import data from "../../data/beers";
 
-class Listing extends React.Component {
+class Listing extends Component {
   constructor(props) {
     super(props);
     this.state = {};
   }
+
+  goToOrders = () => {
+    this.props.showOrders();
+  };
+
   render() {
     return (
       <div>
@@ -14,11 +21,22 @@ class Listing extends React.Component {
           Welcome! Please select from our delicious selection and don't hesitate
           to let us know if we can answer any of your questions.
         </p>
-
+        <button onClick={this.goToOrders}>Check orders</button>
         <BeerList beer={data.beers} />
       </div>
     );
   }
 }
 
-export default Listing;
+const mapDispatchToProps = dispatch => {
+  return {
+    showOrders: () => {
+      dispatch(navigate("showOrders"));
+    }
+  };
+};
+
+export default connect(
+  null,
+  mapDispatchToProps
+)(Listing);
