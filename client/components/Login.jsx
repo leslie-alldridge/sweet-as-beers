@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { navigate } from "../actions/index";
 
-//import { loginUser } from "../../actions";
+import { loginUser, loginError } from "../actions/auth/login";
 
 class Login extends Component {
   constructor(props) {
@@ -19,7 +19,8 @@ class Login extends Component {
     });
   };
 
-  loginUser = () => {
+  loginUser = e => {
+    e.preventDefault();
     this.props.loginUser(this.state);
   };
 
@@ -61,7 +62,7 @@ class Login extends Component {
                       </div>
                     </div>
                     <button
-                      //onClick={this.loginUser}
+                      onClick={this.loginUser}
                       className="button is-block is-info is-large is-fullwidth"
                     >
                       Login
