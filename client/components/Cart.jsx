@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import CartList from "./CartList";
+import { CartList } from "./Index";
 import { connect } from "react-redux";
 import { navigate, deleteItem, updateItem, finalCart } from "../actions/index";
 

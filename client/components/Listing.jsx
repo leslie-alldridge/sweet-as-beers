@@ -1,6 +1,6 @@
 import React from "react";
 import data from "../../data/beers";
-import BeerList from "./BeerList";
+import { BeerList } from "./Index";
 
 class Listing extends React.Component {
   constructor(props) {

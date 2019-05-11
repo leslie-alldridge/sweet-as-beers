@@ -1,5 +1,5 @@
 import React from "react";
-import CartListItem from "./CartListItem";
+import { CartListItem } from "./Index";
 
 const CartList = props => (
   <div>

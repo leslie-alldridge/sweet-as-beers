@@ -1,5 +1,5 @@
 import React from "react";
-import BeerListItem from "./BeerListItem";
+import { BeerListItem } from "./Index";
 import { navigate, addToCart } from "../actions/index";
 import { connect } from "react-redux";
 
