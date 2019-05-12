@@ -1,11 +1,15 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { navigate } from "../actions/index";
+import { navigate, getOrders } from "../actions/index";
 
 class Orders extends Component {
   constructor(props) {
     super(props);
     this.state = {};
+  }
+
+  componentDidMount() {
+    this.props.getOrders();
   }
 
   goToHome = () => {
@@ -44,6 +48,9 @@ const mapDispatchToProps = dispatch => {
   return {
     showListing: () => {
       dispatch(navigate("showListing"));
+    },
+    getOrders: () => {
+      dispatch(getOrders());
     }
   };
 };

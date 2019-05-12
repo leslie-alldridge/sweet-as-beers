@@ -3,7 +3,8 @@ const config = require("../../knexfile")[environment];
 const knex = require("knex")(config);
 
 module.exports = {
-  saveOrder
+  saveOrder,
+  getAllOrders
 };
 
 function saveOrder(order, testDb) {
@@ -11,4 +12,9 @@ function saveOrder(order, testDb) {
   return connection("orders")
     .insert({ order: JSON.stringify(order) })
     .select();
+}
+
+function getAllOrders(testDb) {
+  const connection = testDb || knex;
+  return connection("orders").select();
 }

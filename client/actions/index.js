@@ -53,3 +53,23 @@ export const updateItem = id => {
     id: id
   };
 };
+
+export function getOrders() {
+  return dispatch => {
+    return request("post", "v1/cart/orders")
+      .then(response => {
+        console.log(response);
+        dispatch(orders(response));
+      })
+      .catch(err => {
+        console.log("something broke!");
+      });
+  };
+}
+
+export const orders = data => {
+  return {
+    type: "ORDERS",
+    data
+  };
+};
