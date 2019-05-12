@@ -1,5 +1,7 @@
 # Sweet As Beers 
 
+Issues logged on Github
+
 ## Stretch
 
 Implement the **Checkout** button on the cart page. Have it go to a thank you page and store the items in the cart as a new `Order` (new reducer). On the thank you page, include a "Home" link so they can return to the listing. Verify your orders are being saved using the Redux DevTool.
