@@ -1,3 +1,5 @@
+import request from "../utils/api";
+
 export const navigate = target => {
   return {
     type: "NAVIGATE",
@@ -5,12 +7,29 @@ export const navigate = target => {
   };
 };
 
-export const finalCart = cart => {
+export const saveCart = cart => {
   return {
     type: "SAVE_CART",
     cart
   };
 };
+
+export function finalCart(cart) {
+  return dispatch => {
+    return request("post", "v1/cart/save", cart)
+      .then(response => {
+        console.log("back in action");
+
+        console.log(response);
+
+        dispatch(saveCart(cart));
+        dispatch(navigate("showListing"));
+      })
+      .catch(err => {
+        console.log("something broke!");
+      });
+  };
+}
 
 export const addToCart = (id, name) => {
   return {

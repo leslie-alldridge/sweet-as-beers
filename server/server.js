@@ -3,7 +3,6 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const cors = require("cors");
 
-// check these files out for comments
 const auth = require("./auth/auth");
 const crypto = require("./auth/crypto");
 const users = require("./auth/users");
@@ -19,10 +18,6 @@ server.use(express.static(path.join(__dirname, "../public")));
 //auth routes
 server.post("/api/auth/login", signIn, auth.issueJwt);
 server.post("/api/auth/register", register, auth.issueJwt);
-
-//sign in function - gets the user from the DB.
-// if nothing comes back, invalid credentials function runs
-// if successful, we run the compare function in crypto file to see if the password string in the login form matches their hashed password
 
 function signIn(req, res, next) {
   console.log(req.body.username);
@@ -47,8 +42,6 @@ function signIn(req, res, next) {
 }
 
 function register(req, res, next) {
-  console.log(req.body);
-
   users
     .exists(req.body.username)
     .then(exists => {
@@ -70,7 +63,6 @@ function invalidCredentials(res) {
   });
 }
 
-// //for all routes that satisfy /api/v1/cats we will use routes defined in our cats routes
-// server.use("/api/v1/cats", require("./routes/cats"));
+server.use("/api/v1/cart", require("./routes/cart"));
 
 module.exports = server;
