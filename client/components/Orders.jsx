@@ -5,10 +5,12 @@ import { navigate, getOrders } from "../actions/index";
 class Orders extends Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      orders: this.props.orderArr
+    };
   }
 
-  componentDidMount() {
+  componentWillMount() {
     this.props.orders();
   }
 
@@ -21,26 +23,21 @@ class Orders extends Component {
       <div>
         <p className="welcome">Orders are here</p>
         <button onClick={this.goToHome}>Home</button>
-        {/* {this.props.orders &&
-          this.props.orders.map(orders => {
-            console.log(orders.cart);
-            return orders.cart.map(order => {
-              return (
-                <p key={order.id}>
-                  Order ID: {order.id}, Name: {order.name}, Quantity:{" "}
-                  {order.quantity}
-                </p>
-              );
-            });
-          })} */}
+        {this.props.orderArr &&
+          this.props.orderArr.map(order => {
+            console.log(order);
+            return <p key={order.id}>Order ID: {order.id}</p>;
+          })}
       </div>
     );
   }
 }
 
 function mapStateToProps(state) {
+  console.log(state.orders);
+
   return {
-    orders: state.orders
+    orderArr: state.orders.orders
   };
 }
 
