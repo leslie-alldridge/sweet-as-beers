@@ -1,10 +1,13 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { navigate } from "../actions/index";
+import { navigate, finalCart } from "../actions/index";
 
 class Checkout extends Component {
   constructor(props) {
     super(props);
+    this.state = {
+      cart: this.props.cart
+    };
   }
 
   goHome = () => {
@@ -12,7 +15,7 @@ class Checkout extends Component {
   };
 
   confirmOrder = () => {
-    console.log("order confirmed");
+    this.props.confirmOrder(this.state.cart);
   };
 
   render() {
@@ -44,6 +47,9 @@ const mapDispatchToProps = dispatch => {
   return {
     returnToListing: () => {
       dispatch(navigate("showListing"));
+    },
+    confirmOrder: cart => {
+      dispatch(finalCart(cart));
     }
   };
 };

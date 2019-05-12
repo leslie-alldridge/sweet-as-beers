@@ -10,7 +10,12 @@ export default function(state = [], action) {
           return item;
         });
       } else {
-        return [...state, action];
+        let cart = {
+          id: action.id,
+          name: action.name,
+          quantity: action.quantity
+        };
+        return [...state, cart];
       }
 
     case "DELETE_FROM_CART":

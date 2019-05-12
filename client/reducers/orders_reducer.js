@@ -3,7 +3,7 @@ export default function(state = [], action) {
     case "SAVE_CART":
       console.log("saving cart");
 
-      return [...state, action];
+      return [...state, action.cart];
   }
   return state;
 }

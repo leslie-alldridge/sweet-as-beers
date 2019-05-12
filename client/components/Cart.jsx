@@ -12,7 +12,7 @@ class Cart extends Component {
   }
 
   goToCheckout = () => {
-    this.props.finalCart(this.state.cart);
+    this.props.finalCart();
   };
 
   updateItem = (id, quantity) => {
@@ -66,8 +66,7 @@ const mapDispatchToProps = dispatch => {
 
       dispatch(updateItem(cart));
     },
-    finalCart: cart => {
-      dispatch(finalCart(cart));
+    finalCart: () => {
       dispatch(navigate("showCheckout"));
     }
   };
