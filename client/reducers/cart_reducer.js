@@ -29,6 +29,8 @@ export default function(state = [], action) {
           return item;
         });
       }
+    case "SAVE_CART":
+      return [...state, action.cart];
   }
   return state;
 }

@@ -54,22 +54,26 @@ export const updateItem = id => {
   };
 };
 
-export function getOrders() {
-  return dispatch => {
-    return request("post", "v1/cart/orders")
-      .then(response => {
-        console.log(response);
-        dispatch(orders(response));
-      })
-      .catch(err => {
-        console.log("something broke!");
-      });
-  };
-}
-
 export const orders = data => {
+  console.log(data);
+
   return {
     type: "ORDERS",
     data
   };
 };
+
+export function getOrders() {
+  console.log("hit");
+
+  return dispatch => {
+    return request("get", "v1/cart/orders")
+      .then(response => {
+        console.log(response);
+        dispatch(orders(response.body));
+      })
+      .catch(err => {
+        console.log("something broke!", err);
+      });
+  };
+}

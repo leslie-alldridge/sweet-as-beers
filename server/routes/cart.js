@@ -1,13 +1,19 @@
 var router = require("express").Router();
-var { saveOrder } = require("../db/cart");
+var { saveOrder, getAllOrders } = require("../db/cart");
 
 router.post("/save", (req, res) => {
-  console.log(req.body);
-
   saveOrder(req.body)
     .then(data => {
       res.json(data);
     })
+    .catch(err => {
+      res.status(400).send({ message: err.message });
+    });
+});
+
+router.get("/orders", (req, res) => {
+  getAllOrders()
+    .then(data => res.json(data))
     .catch(err => {
       res.status(400).send({ message: err.message });
     });

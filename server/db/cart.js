@@ -11,7 +11,9 @@ function saveOrder(order, testDb) {
   const connection = testDb || knex;
   return connection("orders")
     .insert({ order: JSON.stringify(order) })
-    .select();
+    .then(data => {
+      return connection("orders").select();
+    });
 }
 
 function getAllOrders(testDb) {

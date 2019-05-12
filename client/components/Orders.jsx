@@ -9,7 +9,7 @@ class Orders extends Component {
   }
 
   componentDidMount() {
-    this.props.getOrders();
+    this.props.orders();
   }
 
   goToHome = () => {
@@ -21,7 +21,7 @@ class Orders extends Component {
       <div>
         <p className="welcome">Orders are here</p>
         <button onClick={this.goToHome}>Home</button>
-        {this.props.orders &&
+        {/* {this.props.orders &&
           this.props.orders.map(orders => {
             console.log(orders.cart);
             return orders.cart.map(order => {
@@ -32,7 +32,7 @@ class Orders extends Component {
                 </p>
               );
             });
-          })}
+          })} */}
       </div>
     );
   }
@@ -49,7 +49,7 @@ const mapDispatchToProps = dispatch => {
     showListing: () => {
       dispatch(navigate("showListing"));
     },
-    getOrders: () => {
+    orders: () => {
       dispatch(getOrders());
     }
   };
