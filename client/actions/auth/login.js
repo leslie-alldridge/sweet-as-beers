@@ -29,8 +29,6 @@ export function loginError(message) {
 }
 
 export function loginUser(creds) {
-  console.log(creds);
-
   return dispatch => {
     dispatch(requestLogin(creds));
     return request("post", "auth/login", creds)
