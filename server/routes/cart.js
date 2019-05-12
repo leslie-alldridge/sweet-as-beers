@@ -2,6 +2,8 @@ var router = require("express").Router();
 var { saveOrder } = require("../db/cart");
 
 router.post("/save", (req, res) => {
+  console.log(req.body);
+
   saveOrder(req.body)
     .then(data => {
       res.json(data);

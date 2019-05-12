@@ -9,6 +9,6 @@ module.exports = {
 function saveOrder(order, testDb) {
   const connection = testDb || knex;
   return connection("orders")
-    .insert(order)
+    .insert({ order: JSON.stringify(order) })
     .select();
 }
