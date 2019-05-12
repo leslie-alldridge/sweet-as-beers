@@ -21,11 +21,19 @@ class Listing extends Component {
           Welcome! Please select from our delicious selection and don't hesitate
           to let us know if we can answer any of your questions.
         </p>
-        <button onClick={this.goToOrders}>Check orders</button>
+        {this.props.auth.user.username == "admin" && (
+          <button onClick={this.goToOrders}>Check orders</button>
+        )}
         <BeerList beer={data.beers} />
       </div>
     );
   }
+}
+
+function mapStateToProps(state) {
+  return {
+    auth: state.auth
+  };
 }
 
 const mapDispatchToProps = dispatch => {
@@ -37,6 +45,6 @@ const mapDispatchToProps = dispatch => {
 };
 
 export default connect(
-  null,
+  mapStateToProps,
   mapDispatchToProps
 )(Listing);

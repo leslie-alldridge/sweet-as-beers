@@ -1,5 +1,6 @@
 import request from "../../utils/api";
 import { saveUserToken } from "../../utils/auth.js";
+import { navigate } from "../index";
 
 function requestLogin() {
   return {
@@ -36,6 +37,7 @@ export function loginUser(creds) {
       .then(response => {
         const userInfo = saveUserToken(response.body.token);
         dispatch(receiveLogin(userInfo));
+        dispatch(navigate("showListing"));
       })
       .catch(err => {
         dispatch(loginError(err.response.body.message));
