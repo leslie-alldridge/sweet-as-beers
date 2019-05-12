@@ -84,12 +84,19 @@ class Login extends Component {
                   </form>
                 </div>
                 <p className="has-text-grey">
-                  <span onClick={() => this.props.navigateTo("showRegister")}>
+                  <span
+                    id="link"
+                    onClick={() => this.props.navigateTo("showRegister")}
+                  >
                     Sign Up
                   </span>
                   &nbsp;·&nbsp;
-                  <a href="#/forgot">Forgot Password</a> &nbsp;·&nbsp;
-                  <a href="#/help">Need Help?</a>
+                  <span
+                    id="link"
+                    onClick={() => this.props.navigateTo("showHelp")}
+                  >
+                    Help
+                  </span>
                 </p>
               </div>
             </div>

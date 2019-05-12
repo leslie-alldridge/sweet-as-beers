@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { registerUserRequest } from "../actions/auth/register";
+import { navigate } from "../actions/index";
 
 class Register extends Component {
   constructor(props) {
@@ -97,8 +98,19 @@ class Register extends Component {
                   </form>
                 </div>
                 <p className="has-text-grey">
-                  <a href="#/login">Login</a> &nbsp;·&nbsp;
-                  <a href="#/help">Need Help?</a>
+                  <span
+                    id="link"
+                    onClick={() => this.props.navigateTo("showLogin")}
+                  >
+                    Login
+                  </span>{" "}
+                  &nbsp;·&nbsp;
+                  <span
+                    id="link"
+                    onClick={() => this.props.navigateTo("showHelp")}
+                  >
+                    Help
+                  </span>
                 </p>
               </div>
             </div>
@@ -113,6 +125,9 @@ const mapDispatchToProps = dispatch => {
   return {
     registerUser: creds => {
       dispatch(registerUserRequest(creds));
+    },
+    navigateTo: page => {
+      return dispatch(navigate(page));
     }
   };
 };

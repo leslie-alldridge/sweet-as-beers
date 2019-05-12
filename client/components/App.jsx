@@ -7,7 +7,8 @@ import {
   Cart,
   Orders,
   Login,
-  Register
+  Register,
+  Help
 } from "./Index";
 
 const App = props => {
@@ -24,6 +25,8 @@ const App = props => {
         <Login />
       ) : props.showListing === "showRegister" ? (
         <Register />
+      ) : props.showListing === "showHelp" ? (
+        <Help />
       ) : (
         <Cart />
       )}
