@@ -29,13 +29,6 @@ export default function(state = [], action) {
           return item;
         });
       }
-
-    // case 'SAVE_CART':
-    // return [...state, action]
-
-    //in development
   }
   return state;
 }
-
-//state.slice(0, action.id).concat(state.slice(action.id +1));
