@@ -22,7 +22,8 @@ const App = props => {
           Logout
         </p>
       )}
-      {props.showListing === "showListing" ? (
+      {props.showListing === "showListing" ||
+      (props.showListing == "showLogin" && props.auth.user) ? (
         <Listing />
       ) : props.showListing === "showCheckout" ? (
         <Checkout />
