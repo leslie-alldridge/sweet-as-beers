@@ -1,7 +1,9 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+
 import { navigate } from "../actions/index";
 import { BeerList } from "./Index";
+
 import data from "../../data/beers";
 
 class Listing extends Component {

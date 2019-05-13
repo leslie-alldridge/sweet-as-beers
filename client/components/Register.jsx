@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+
 import { registerUserRequest } from "../actions/auth/register";
 import { navigate } from "../actions/index";
 

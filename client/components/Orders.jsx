@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+
 import { navigate, getOrders } from "../actions/index";
 
 class Orders extends Component {
