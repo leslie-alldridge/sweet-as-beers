@@ -1,4 +1,5 @@
 const jwt = require("jsonwebtoken");
+
 const users = require("./users");
 
 function createToken(user, secret) {
@@ -9,7 +10,7 @@ function createToken(user, secret) {
     },
     secret,
     {
-      expiresIn: 60 * 60 * 24 // or '1d'
+      expiresIn: 60 * 60 * 24
     }
   );
 }

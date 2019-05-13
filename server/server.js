@@ -15,12 +15,10 @@ server.use(bodyParser.json());
 server.use(express.urlencoded({ extended: true }));
 server.use(express.static(path.join(__dirname, "../public")));
 
-//auth routes
 server.post("/api/auth/login", signIn, auth.issueJwt);
 server.post("/api/auth/register", register, auth.issueJwt);
 
 function signIn(req, res, next) {
-  console.log(req.body.username);
   users
     .getByName(req.body.username)
     .then(user => {
