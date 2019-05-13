@@ -10,11 +10,18 @@ import {
   Register,
   Help
 } from "./Index";
+import { logoutUser } from "../actions/auth/logout";
+import { navigate } from "../actions";
 
 const App = props => {
   return (
     <div className="app">
       <Header />
+      {props.auth.user && (
+        <p id="link" onClick={() => props.logout()}>
+          Logout
+        </p>
+      )}
       {props.showListing === "showListing" ? (
         <Listing />
       ) : props.showListing === "showCheckout" ? (
@@ -36,8 +43,21 @@ const App = props => {
 
 function mapStateToProps(state) {
   return {
-    showListing: state.navReducer
+    showListing: state.navReducer,
+    auth: state.auth
   };
 }
 
-export default connect(mapStateToProps)(App);
+const mapDispatchToProps = dispatch => {
+  return {
+    logout: () => {
+      dispatch(logoutUser());
+      dispatch(navigate("showLogin"));
+    }
+  };
+};
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(App);

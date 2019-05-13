@@ -64,8 +64,6 @@ export const orders = data => {
 };
 
 export function getOrders() {
-  console.log("hit");
-
   return dispatch => {
     return request("get", "v1/cart/orders")
       .then(response => {

@@ -25,7 +25,6 @@ class Orders extends Component {
         <button onClick={this.goToHome}>Home</button>
         {this.props.orderArr &&
           this.props.orderArr.map(order => {
-            console.log(order);
             return <p key={order.id}>Order ID: {order.id}</p>;
           })}
       </div>
@@ -34,8 +33,6 @@ class Orders extends Component {
 }
 
 function mapStateToProps(state) {
-  console.log(state.orders);
-
   return {
     orderArr: state.orders.orders
   };

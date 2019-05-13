@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { navigate } from "../actions/index";
 
-import { loginUser, loginError } from "../actions/auth/login";
+import { loginUser } from "../actions/auth/login";
 
 class Login extends Component {
   constructor(props) {
