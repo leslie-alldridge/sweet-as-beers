@@ -18,7 +18,6 @@ function receiveLogout() {
 
 export function logoutUser() {
   return dispatch => {
-    document.location = "/#/";
     dispatch(requestLogout());
     removeUser();
     dispatch(receiveLogout());

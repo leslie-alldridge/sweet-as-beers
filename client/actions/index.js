@@ -18,10 +18,6 @@ export function finalCart(cart) {
   return dispatch => {
     return request("post", "v1/cart/save", cart)
       .then(response => {
-        console.log("back in action");
-
-        console.log(response);
-
         dispatch(saveCart(cart));
         dispatch(navigate("showListing"));
       })
@@ -67,7 +63,6 @@ export function getOrders() {
   return dispatch => {
     return request("get", "v1/cart/orders")
       .then(response => {
-        console.log(response);
         dispatch(orders(response.body));
       })
       .catch(err => {

@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+
 import { navigate } from "../actions/index";
 
 class Help extends Component {
