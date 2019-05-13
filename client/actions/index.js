@@ -51,8 +51,6 @@ export const updateItem = id => {
 };
 
 export const orders = data => {
-  console.log(data);
-
   return {
     type: "ORDERS",
     data
