@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+
 import { navigate, finalCart } from "../actions/index";
 
 class Checkout extends Component {

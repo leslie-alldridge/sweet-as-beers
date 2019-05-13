@@ -1,7 +1,8 @@
 import React, { Component } from "react";
-import { CartList } from "./Index";
 import { connect } from "react-redux";
-import { navigate, deleteItem, updateItem, finalCart } from "../actions/index";
+
+import { CartList } from "./Index";
+import { navigate, deleteItem, updateItem } from "../actions/index";
 
 class Cart extends Component {
   constructor(props) {
@@ -62,8 +63,6 @@ const mapDispatchToProps = dispatch => {
       dispatch(deleteItem(id));
     },
     updateItem: cart => {
-      console.log("hit");
-
       dispatch(updateItem(cart));
     },
     finalCart: () => {
