@@ -1,6 +1,6 @@
 # Sweet As Beers 
 
-Issues logged on Github
+Issues logged on Github - In progress
 
 ## Stretch
 
